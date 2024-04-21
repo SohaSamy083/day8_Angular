@@ -1,6 +1,6 @@
 <!-- <h1>{{prdName.className | json}}</h1> -->
 <!-- <h1>{{prdName.errors | json}}</h1> -->
-<form (submit)="addProduct()" #addProductForm="ngForm">
+<form (submit)= "!currentId &&addProduct(); currentId && update()" #addProductForm="ngForm">
   <div class="form-group mb-4">
     <label>Name:</label>
     <input type="text" class="form-control" placeholder="Enter Name" [(ngModel)]="newProduct.name"

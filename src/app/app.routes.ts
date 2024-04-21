@@ -12,11 +12,18 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { authGuard } from './guards/auth.guard';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { RegisterComponent } from './components/register/register.component';
+//import { OrderComponent } from './components/order/order.component';
 
 export const routes: Routes = [
     {path:'',redirectTo: 'home', pathMatch: 'full'},
     {path:'home',component:HomeComponent},
-    {path:'products',component:ProductComponent,canActivate:[authGuard]},
+    {path:'Register',component:RegisterComponent},
+   // {path:'products',component:ProductComponent,canActivate:[authGuard]},
+    {path:'products',loadComponent:()=>import('./components/product/product.component')
+    .then((obj)=>obj.ProductComponent)
+    ,canActivate:[authGuard]},
+     
     {path:'addProduct',component:AddProductComponent},
     {path:'addProduct/:id',component:AddProductComponent},
     {path:'details/:id',component:DetailsComponent},

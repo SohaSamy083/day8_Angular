@@ -96,13 +96,10 @@ export class ProductComponent implements OnChanges, OnInit {
   }
 
   editProduct(product: Iproduct) {
-    this._ApiProducts.updateProduct(product.id, product).subscribe({
-      next:(res)=>{
-          this._ApiProducts.state.next(false);
-          Swal.fire('Good job!', 'successfully updated product!', 'success');
-          this.router.navigateByUrl('/products')
-      }
-    });
+
+          this.router.navigateByUrl(`/addProduct/${product.id}`)
+      
+    
   }
 
   deleteProduct(id: number): void {

@@ -9,14 +9,6 @@
       "categoryID": 10
     },
     {
-      "id": "2",
-      "name": "Samsung mobile",
-      "img": "https://picsum.photos/200",
-      "price": 40000,
-      "quantity": 1,
-      "categoryID": 10
-    },
-    {
       "id": "3",
       "name": "hauawi mobile",
       "img": "https://picsum.photos/200",
@@ -26,7 +18,7 @@
     },
     {
       "id": "4",
-      "name": "Dell laptop",
+      "name": "ddddd",
       "img": "https://picsum.photos/200",
       "price": 45000,
       "quantity": 3,
@@ -34,7 +26,7 @@
     },
     {
       "id": "5",
-      "name": "HP laptop",
+      "name": "qwee",
       "img": "https://picsum.photos/200",
       "price": 60000,
       "quantity": 1,
@@ -79,6 +71,22 @@
       "price": 1000,
       "quantity": 5,
       "categoryID": 10
+    },
+    {
+      "id": "11",
+      "name": "NEWw PRODUCT",
+      "img": "https://picsum.photos/200",
+      "price": 1000,
+      "quantity": 5,
+      "categoryID": 10
+    },
+    {
+      "id": "2529",
+      "name": "erwt",
+      "price": 234,
+      "quantity": 2,
+      "img": "C:\\fakepath\\Screenshot 2024-01-01 162451.png",
+      "categoryID": "20"
     }
   ],
   "categories": [

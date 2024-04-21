@@ -1,24 +1,35 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Iproduct } from '../models/iproduct';
 import { environment } from './../../environments/environment.development';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiProductsService {
-  state: any;
+  state: BehaviorSubject<boolean>= new BehaviorSubject(false);
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private _AuthenticationService:AuthenticationService) { }
   getAllProducts():Observable<Iproduct[]>{
-  return  this.httpClient.get<Iproduct[]>(`${environment.baseUrl}/products`)
+  return  this.httpClient.get<Iproduct[]>(`${environment.baseUrl}/products`,{
+    headers:new HttpHeaders({
+     // "authorization":this._AuthenticationService.getToken()
+    })
+  })
   }
   getProductById(id:number):Observable<Iproduct>{
     return this.httpClient.get<Iproduct>(`${environment.baseUrl}/products/${id}`)
   }
   getProductsByCatId(catId:number):Observable<Iproduct[]>{
-    return this.httpClient.get<Iproduct[]>(`${environment.baseUrl}/products?categoryID=${catId}`)
+    let searchString= new HttpParams()
+    searchString=searchString.append("categoryID",catId)
+    searchString=searchString.append("limit",5)
+    return this.httpClient.get<Iproduct[]>(`${environment.baseUrl}/products`,{
+      //params:new HttpParams().set("categoryID",catId)
+      params:searchString
+    })
   }
   deleteProduct(id:number):Observable<any>{
     return this.httpClient.delete(`${environment.baseUrl}/products/${id}`);
